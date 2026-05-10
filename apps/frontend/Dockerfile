@@ -1,5 +1,6 @@
-FROM python:3.9-slim
+FROM python:3.12-slim
 WORKDIR /app
-COPY src/frontend.py .
-RUN pip install flask requests
+COPY apps/frontend/src/frontend.py .
+COPY pyproject.toml .
+RUN pip install .
 CMD ["python", "frontend.py"]
