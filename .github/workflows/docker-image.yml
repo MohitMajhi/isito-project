@@ -4,9 +4,14 @@ on:
   push:
     branches:
       - '**'
+    paths:
+      - 'apps/**'
+
   pull_request:
     branches:
       - '**'
+    paths:
+      - 'apps/**'
 
 jobs:
   changes:
@@ -52,7 +57,7 @@ jobs:
         if: github.ref == 'refs/heads/master'
         run: |
           docker push \
-            ${{ secrets.DOCKERHUB_USERNAME }}/istio-api:${{ github.sha }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/istio-fe:${{ github.sha }}
 
   build-backend:
     needs: changes
@@ -65,7 +70,7 @@ jobs:
       - name: Build Backend
         run: |
           docker build \
-            -t ${{ secrets.DOCKERHUB_USERNAME }}/backend-app:${{ github.sha }} \
+            -t ${{ secrets.DOCKERHUB_USERNAME }}/istio-api:${{ github.sha }} \
             ./backend
 
       # Only push on master
@@ -80,4 +85,4 @@ jobs:
         if: github.ref == 'refs/heads/master'
         run: |
           docker push \
-            ${{ secrets.DOCKERHUB_USERNAME }}/backend-app:${{ github.sha }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/istio-api:${{ github.sha }}

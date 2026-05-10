@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: mohitmajhi/istio-api:v3
+        image: mohitmajhi/istio-api
         ports:
         - containerPort: 5000
 
@@ -50,7 +50,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: mohitmajhi/istio-fe:v3
+        image: mohitmajhi/istio-fe
         ports:
         - containerPort: 5000
 
