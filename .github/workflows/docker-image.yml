@@ -28,8 +28,8 @@ jobs:
         id: filter
         with:
           filters: |
-            frontend: ['/app/frontend/**']
-            backend: ['/app/backend/**']
+            frontend: ['app/frontend/**']
+            backend: ['app/backend/**']
 
   build-frontend:
     needs: changes
