@@ -1,5 +1,6 @@
-FROM python:3.9-slim
+FROM python:3.12-slim
 WORKDIR /app
-COPY src/backend.py .
-RUN pip install flask requests
+COPY apps/backend/src/backend.py .
+COPY pyproject.toml .
+RUN pip install .
 CMD ["python", "backend.py"]

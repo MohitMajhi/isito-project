@@ -42,8 +42,9 @@ jobs:
       - name: Build Frontend
         run: |
           docker build \
+            -f apps/frontend/Dockerfile \
             -t ${{ secrets.DOCKERHUB_USERNAME }}/istio-fe:${{ github.sha }} \
-            ./apps/frontend
+            .
 
       # Only push on master
       - name: Login to Docker Hub
@@ -70,8 +71,9 @@ jobs:
       - name: Build Backend
         run: |
           docker build \
+            -f apps/backend/Dockerfile \
             -t ${{ secrets.DOCKERHUB_USERNAME }}/istio-api:${{ github.sha }} \
-            ./apps/backend
+            .
 
       # Only push on master
       - name: Login to Docker Hub
